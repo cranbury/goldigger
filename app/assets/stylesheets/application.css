@@ -19,7 +19,14 @@ ul
   list-style-type: none;
 }
 li{
-    margin: 0;
+  margin: 0;
   padding: 0;
   list-style-type: none;
+}
+body {
+  background-image:url("http://mayleesart.com/sitebuilder/images/GoldSpeckBackgroundRr2-1028x781.jpg");
+  background-repeat:no-repeat;
+  background-position:center; 
+  background-size: 100%;
+
 }
