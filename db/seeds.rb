@@ -1,5 +1,5 @@
-# Investor.destroy_all
-# Investment.destroy_all
+Investor.destroy_all
+Investment.destroy_all
 
 #david = HTTParty.get("http://api.crunchbase.com/v/2/person/david-tisch?user_key=f37ccc5c5ba5deb17395cecee16778cd")
 people = HTTParty.get("http://api.crunchbase.com/v/2/people?user_key=f37ccc5c5ba5deb17395cecee16778cd")
@@ -12,16 +12,16 @@ all_paths = @people.map {|person| person["path"]}
 
 investors = {}
 
-50.times do |ind|
-  person = @people[ind]
-  path = person["path"]
+all_paths.each_with_index do |path, i|
+  person = @people[i]
+  # path = person["path"]
   person_response = HTTParty.get("http://api.crunchbase.com/v/2/"+ path +"?user_key=f37ccc5c5ba5deb17395cecee16778cd")
 
  
   if person_response["data"]["relationships"]["investments"]
     investor = Investor.create({name: person["name"], path: person["path"]})
     
-    binding.pry
+    #binding.pry
 
     person_response["data"]["relationships"]["investments"]["items"].each do |investment|
       fund_path = investment["funding_round"]["path"]
