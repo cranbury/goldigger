@@ -7,6 +7,5 @@ class Investor < ActiveRecord::Base
     @people = reponse["data"]["items"]
   end
 
-  def all
 
 end
