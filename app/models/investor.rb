@@ -1,4 +1,5 @@
 class Investor < ActiveRecord::Base
+  has_many :investments
 
 
   def pull_all_people
