@@ -11,7 +11,7 @@ class WelcomeController < ApplicationController
     Investor.all.each do |investor|
       #binding.pry
       recent_investments = investor.investments.select{|inv| inv.date > Date.today - days }
-      recent_investments = recent_investments.select{|inv| inv.round == round} if round != "all"
+      recent_investments = recent_investments.select{|inv| inv.round == round} if round != "all stages"
       @investors << investor if !recent_investments.empty?
     end
 
