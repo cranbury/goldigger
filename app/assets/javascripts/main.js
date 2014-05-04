@@ -2,7 +2,7 @@ investors = [];
 
 $(document).ready(function(){
   $("form").submit(function(e){
-  e.preventDefault;
+  e.preventDefault();
   var periodMode = $("#period").val();
   period(periodMode);
 })
@@ -30,8 +30,9 @@ function period(periodMode) {
       days = 10000;
   }
   
-  $.getJSON('/investors', {days: days}).done(function(data) {
-    investors = data.responseJSON;
+  response = $.getJSON('/investors', {days: days}).done(function(data) {
+    console.log(data);
+    investors = data;
   });
   // AJAX call with variable plugged in
   //looks like $.getJSON(url, {days: variable})

@@ -3,12 +3,13 @@ class WelcomeController < ApplicationController
   end
 
   def investors
-    days = params[:days]
+    days = params[:days].to_i
 
     @investors = []
 
     Investor.all.each do |investor|
-      recent_investments = investor.investments.where(date > Date.today - days )
+      #binding.pry
+      recent_investments = investor.investments.select{|inv| inv.date > Date.today - days }
       @investors << investor if !recent_investments.empty?
     end
 
