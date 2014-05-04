@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140504001222) do
+ActiveRecord::Schema.define(version: 20140504003108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140504001222) do
 
   create_table "investors", force: true do |t|
     t.string "name"
+    t.string "path"
   end
 
 end
