@@ -2,9 +2,21 @@ Investor.destroy_all
 Investment.destroy_all
 
 #david = HTTParty.get("http://api.crunchbase.com/v/2/person/david-tisch?user_key=f37ccc5c5ba5deb17395cecee16778cd")
-people = HTTParty.get("http://api.crunchbase.com/v/2/people?user_key=f37ccc5c5ba5deb17395cecee16778cd")
-@people = people["data"]["items"]
+page_suffix = ""
+@people = []
+pages = 1
+page = 0
 
+while page < pages do
+  page += 1
+  page_suffix = "&page=" + page.to_s if page > 1
+
+  people = HTTParty.get("http://api.crunchbase.com/v/2/people?user_key=f37ccc5c5ba5deb17395cecee16778cd" + page_suffix)
+  @people += people["data"]["items"]
+
+  pages = people["data"]["paging"]["number_of_pages"]
+
+end
 # people_one = HTTParty.get("http://api.crunchbase.com/v/2/people?user_key=f37ccc5c5ba5deb17395cecee16778cd&page=2")
 # @people_one = people_one["data"]["items"]
 
