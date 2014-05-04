@@ -36,6 +36,12 @@ function period(periodMode, round) {
   response = $.getJSON('/investors', {days: days, round: round}).done(function(data) {
     console.log(data);
     investors = data;
+    $("ul").empty();
+    for(var i = 0; i < investors.length; i++){
+      var li = $("<li><a href=http://www.crunchbase.com/" +investors[i].path+ ">" + investors[i].name+"</a></li>");
+      //li.val = investors[i].name;
+      $("ul").append(li);
+    }
   });
   // AJAX call with variable plugged in
   //looks like $.getJSON(url, {days: variable})
