@@ -4,15 +4,17 @@ $(document).ready(function(){
   $("form").submit(function(e){
   e.preventDefault();
   var periodMode = $("#period").val();
-  period(periodMode);
+  var round = $("#round").val();
+  period(periodMode, round);
 })
   
 })
 
 
-function period(periodMode) {
+function period(periodMode, round) {
   // variable is assigned based on periodMode
   var days = 0;
+
   switch(periodMode){
     case "Last 3 Months":
       days = 90;
@@ -29,8 +31,9 @@ function period(periodMode) {
     default:
       days = 10000;
   }
+
   
-  response = $.getJSON('/investors', {days: days}).done(function(data) {
+  response = $.getJSON('/investors', {days: days, round: round}).done(function(data) {
     console.log(data);
     investors = data;
   });
