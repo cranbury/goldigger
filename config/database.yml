@@ -46,7 +46,7 @@ test:
   encoding: unicode
   database: goldigger_test
   pool: 5
-  username: goldigger
+  username: dmitryjum
   password:
 
 production:
@@ -54,5 +54,5 @@ production:
   encoding: unicode
   database: goldigger_production
   pool: 5
-  username: goldigger
+  username: dmitryjum
   password:
